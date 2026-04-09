@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://clqw7qs8b3gmj"]
+
+[ext_resource type="Script" uid="uid://cgc1x01y2750b" path="res://scripts/pasusemenu.gd" id="1_cxmgw"]
+
+[node name="pasusemenu" type="Control" unique_id=1038008766]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cxmgw")
+
+[node name="Panel" type="Panel" parent="." unique_id=1265005995]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=40318500]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResumeBtn" type="Button" parent="Panel/VBoxContainer" unique_id=1523861709]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitBtn" type="Button" parent="Panel/VBoxContainer" unique_id=1030545782]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Quit"

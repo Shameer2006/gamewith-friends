@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dxjlku71crqmh"]
+
+[ext_resource type="Script" uid="uid://ce3s4vrk7mber" path="res://scripts/mainmenu.gd" id="1_5mbse"]
+
+[node name="mainmenu" type="Control" unique_id=856081788]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 367.0
+offset_right = 255.0
+offset_bottom = 367.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5mbse")
+
+[node name="Panel" type="Panel" parent="." unique_id=822102095]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -194.0
+offset_right = 540.0
+offset_bottom = 101.0
+
+[node name="start" type="Button" parent="Panel" unique_id=1490655203]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 63.0
+offset_right = 342.0
+offset_bottom = 116.0
+text = "start
+"
+
+[node name="quit" type="Button" parent="Panel" unique_id=990291772]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 167.0
+offset_right = 338.0
+offset_bottom = 218.0
+text = "quit
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363376831]
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=1282706081]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 1164.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Panel/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/quit" to="." method="_on_quit_pressed"]

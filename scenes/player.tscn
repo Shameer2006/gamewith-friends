@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://casgcs7q8ujxx"]
+
+[ext_resource type="Script" uid="uid://dan8rdmtctyco" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://d3grwytqsqvcj" path="res://assets/light.glb" id="2_g2els"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5100857, -0.2762951, -0.5813467)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0.5100857, -0.34247634, -0.5813467), Vector3(0.5100857, -0.3204485, -0.5813467), Vector3(0.5100857, -0.34247634, -0.5813467)]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "run"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.98, 1.48, 1.98),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.5100204, -0.31783333, -0.5813467), Vector3(0.42508918, -0.3418387, -0.5813467), Vector3(0.36798596, -0.28653404, -0.55223364), Vector3(0.42508918, -0.3418387, -0.5813467), Vector3(0.5100204, -0.31783333, -0.5813467)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
+_data = {
+&"RESET": SubResource("Animation_g2els"),
+&"idle": SubResource("Animation_qhqgy"),
+&"run": SubResource("Animation_dqkch")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=688494791]
+script = ExtResource("1_3vyb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=507736]
+mesh = SubResource("CapsuleMesh_u8vuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1592255421]
+shape = SubResource("CapsuleShape3D_3vyb7")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1474609836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5661926, -0.08564854)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=1672931230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52105933, -0.27994365, -0.6766661)
+light_color = Color(0.9999983, 0.9905363, 0.59236425, 1)
+light_energy = 2.586
+spot_range = 12.399748
+spot_angle = 49.218742
+
+[node name="light" parent="Camera3D" unique_id=2070652712 instance=ExtResource("2_g2els")]
+transform = Transform3D(0.14780936, 0, 0.9890159, 0, 1, 0, -0.9890159, 0, 0.14780936, 0.5100857, -0.2762951, -0.5813467)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=362187177]
+libraries/ = SubResource("AnimationLibrary_qlg0r")
+autoplay = &"idle"

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bokn5m4sjypna"]
+
+[ext_resource type="PackedScene" path="res://scenes/lonewolfe.tscn" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://casgcs7q8ujxx" path="res://scenes/player.tscn" id="2_rwgxs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.19414508, 0.18639508, 0.17739508, 1)
+ground_horizon_color = Color(0.19414508, 0.18639508, 0.17739508, 1)
+
+[sub_resource type="Sky" id="Sky_4wyf3"]
+sky_material = SubResource("ProceduralSkyMaterial_rwgxs")
+
+[sub_resource type="Environment" id="Environment_k0juu"]
+background_mode = 2
+sky = SubResource("Sky_4wyf3")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.02
+
+[node name="world" type="Node3D" unique_id=91534564]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1813790325]
+environment = SubResource("Environment_k0juu")
+
+[node name="Sketchfab_Scene" parent="." unique_id=489353737 instance=ExtResource("1_rwgxs")]
+transform = Transform3D(1.0633575, 0, 0, 0, 1.1442362, 0, 0, 0, 1.2008325, 4.284632, 0, 0)
+
+[node name="CharacterBody3D" parent="." unique_id=688494791 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(0.9998477, 0, 0.017452406, 0, 1, 0, -0.017452406, 0, 0.9998477, -53.62846, 1.913644, -3.8363733)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2125169466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.32336, 10.445692, -8.672728)
+omni_range = 17.038637
