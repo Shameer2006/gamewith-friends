@@ -1,5 +1,5 @@
 [gd_scene format=3 uid="uid://r4oek1ncilk"]
 
-[ext_resource type="PackedScene" uid="uid://cpma8nj7762e5" path="res://assets/rooms.glb" id="1_x2141"]
+[ext_resource type="PackedScene" uid="uid://bu117imvar778" path="res://assets/dongen.glb" id="1_x2141"]
 
-[node name="rooms" unique_id=350925602 instance=ExtResource("1_x2141")]
+[node name="dongen" unique_id=1978991947 instance=ExtResource("1_x2141")]

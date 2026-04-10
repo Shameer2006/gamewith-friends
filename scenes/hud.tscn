@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://h246rwqevrsk"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+[ext_resource type="FontFile" path="res://fount/Font1/Ghastly Panic.ttf" id="2_font"]
+[ext_resource type="PackedScene" uid="uid://clqw7qs8b3gmj" path="res://scenes/pasusemenu.tscn" id="3_pause"]
+[ext_resource type="PackedScene" uid="uid://cvkcigb1fjn7t" path="res://scenes/backpack.tscn" id="4_backpack"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.06, 0.03, 0.03, 0.80)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.06, 0.06, 0.70)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.15, 0.72, 0.18, 1.0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_container"]
+bg_color = Color(0.04, 0.02, 0.02, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.06, 0.06, 0.60)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HealthContainer" type="PanelContainer" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 420.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_container")
+
+[node name="HBox" type="HBoxContainer" parent="HealthContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeartLabel" type="Label" parent="HealthContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.10, 0.10, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "+"
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="HealthContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_minimum_size = Vector2(240, 26)
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.72, 0.68, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "100 / 100"
+vertical_alignment = 1
+
+[node name="BloodOverlay" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.55, 0.0, 0.0, 0.0)
+mouse_filter = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_pause")]
+
+[node name="Backpack" parent="." instance=ExtResource("4_backpack")]

@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cvkcigb1fjn7t"]
+
+[ext_resource type="Script" uid="uid://bg6ihnxpdu8bd" path="res://scripts/backpack.gd" id="1_bp"]
+[ext_resource type="FontFile" uid="uid://blk0jl51dsd4g" path="res://fount/Font1/Ghastly Panic.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://c0hy2r7yfgrff" path="res://image assets/backpack_1702947.png" id="3_bag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.05, 0.03, 0.03, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.08, 0.08, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.22, 0.06, 0.06, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.14, 0.14, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.04, 0.02, 0.02, 0.93)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0.07, 0.07, 0.88)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Backpack" type="Control" unique_id=1269033001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_bp")
+
+[node name="BagButton" type="Button" parent="." unique_id=1307150690]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 31.0
+offset_right = -26.0
+offset_bottom = 111.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+
+[node name="BagIcon" type="TextureRect" parent="BagButton" unique_id=1527915500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bag")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeyHint" type="Label" parent="BagButton" unique_id=851112417]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.6, 0.45, 0.4, 0.9)
+theme_override_font_sizes/font_size = 12
+text = "[B]"
+horizontal_alignment = 1
+
+[node name="DimOverlay" type="ColorRect" parent="." unique_id=1738935032]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="DimOverlay" unique_id=1478902973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="DimOverlay/CenterContainer" unique_id=1152095146]
+custom_minimum_size = Vector2(580, 500)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="DimOverlay/CenterContainer/Panel" unique_id=768817320]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="TitleRow" type="HBoxContainer" parent="DimOverlay/CenterContainer/Panel/VBox" unique_id=2017831194]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleIcon" type="TextureRect" parent="DimOverlay/CenterContainer/Panel/VBox/TitleRow" unique_id=1254942319]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_bag")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="DimOverlay/CenterContainer/Panel/VBox/TitleRow" unique_id=849746349]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.65, 0.58, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 34
+text = "Belongings"
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="DimOverlay/CenterContainer/Panel/VBox/TitleRow" unique_id=177010962]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.28, 0.25, 1)
+theme_override_colors/font_hover_color = Color(1, 0.45, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn")
+text = "X"
+
+[node name="Divider" type="ColorRect" parent="DimOverlay/CenterContainer/Panel/VBox" unique_id=77346029]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.32, 0.07, 0.07, 0.55)
+
+[node name="ItemGrid" type="GridContainer" parent="DimOverlay/CenterContainer/Panel/VBox" unique_id=238866161]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="EmptyLabel" type="Label" parent="DimOverlay/CenterContainer/Panel/VBox" unique_id=1707056113]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.32, 0.28, 0.75)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Your satchel is empty..."
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="DimOverlay/CenterContainer/Panel/VBox" unique_id=574312618]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32, 0.24, 0.22, 0.6)
+theme_override_font_sizes/font_size = 13
+text = "Press B or click X to close"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BagButton" to="." method="_on_bag_button_pressed"]
+[connection signal="pressed" from="DimOverlay/CenterContainer/Panel/VBox/TitleRow/CloseBtn" to="." method="_on_close_pressed"]

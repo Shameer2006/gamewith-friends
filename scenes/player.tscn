@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dan8rdmtctyco" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d3grwytqsqvcj" path="res://assets/light.glb" id="2_g2els"]
+[ext_resource type="Shader" uid="uid://dh2p7pfyd63r0" path="res://shaders/player.gdshader" id="3_qhqgy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -62,7 +63,23 @@ _data = {
 &"run": SubResource("Animation_dqkch")
 }
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_dqkch"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("3_qhqgy")
+shader_parameter/smearing = 0.5
+shader_parameter/color_offset = 0.005
+shader_parameter/sharpening = 0.4
+shader_parameter/static_noise = 0.08
+shader_parameter/crack_center = Vector2(0.15, 0.85)
+shader_parameter/crack_intensity = 0.4
+shader_parameter/crack_size = 0.35
+shader_parameter/vertical_jitter = 0.002
+shader_parameter/scanline_opacity = 0.1
+shader_parameter/vignette_intensity = 0.3
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=688494791]
+collision_layer = 3
 script = ExtResource("1_3vyb7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=507736]
@@ -74,16 +91,21 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1474609836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5661926, -0.08564854)
 
+[node name="light" parent="Camera3D" unique_id=2070652712 instance=ExtResource("2_g2els")]
+transform = Transform3D(0.14780936, 0, 0.9890159, 0, 1, 0, -0.9890159, 0, 0.14780936, 0.5100857, -0.2762951, -0.5813467)
+
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=1672931230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52105933, -0.27994365, -0.6766661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52105933, -0.27994365, -0.676666)
 light_color = Color(0.9999983, 0.9905363, 0.59236425, 1)
 light_energy = 2.586
 spot_range = 12.399748
 spot_angle = 49.218742
 
-[node name="light" parent="Camera3D" unique_id=2070652712 instance=ExtResource("2_g2els")]
-transform = Transform3D(0.14780936, 0, 0.9890159, 0, 1, 0, -0.9890159, 0, 0.14780936, 0.5100857, -0.2762951, -0.5813467)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=362187177]
 libraries/ = SubResource("AnimationLibrary_qlg0r")
 autoplay = &"idle"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1486334622]
+transform = Transform3D(0.5942987, 0, 0, 0, -4.371139e-08, 0.38860482, 0, -1, -1.6986457e-08, 0, 0.5643493, -0.57794297)
+mesh = SubResource("PlaneMesh_dqkch")
+surface_material_override/0 = SubResource("ShaderMaterial_qlg0r")

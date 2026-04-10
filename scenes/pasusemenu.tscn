@@ -1,38 +1,165 @@
 [gd_scene format=3 uid="uid://clqw7qs8b3gmj"]
 
 [ext_resource type="Script" uid="uid://cgc1x01y2750b" path="res://scripts/pasusemenu.gd" id="1_cxmgw"]
+[ext_resource type="FontFile" uid="uid://blk0jl51dsd4g" path="res://fount/Font1/Ghastly Panic.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_overlay"]
+bg_color = Color(0, 0, 0, 0.65)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.05, 0.03, 0.03, 0.93)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.07, 0.07, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resume_normal"]
+bg_color = Color(0.06, 0.12, 0.06, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18, 0.38, 0.18, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resume_hover"]
+bg_color = Color(0.1, 0.22, 0.1, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.58, 0.28, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_normal"]
+bg_color = Color(0.12, 0.04, 0.04, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.08, 0.08, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_hover"]
+bg_color = Color(0.25, 0.06, 0.06, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.12, 0.12, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="pasusemenu" type="Control" unique_id=1038008766]
 visible = false
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxmgw")
 
-[node name="Panel" type="Panel" parent="." unique_id=1265005995]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="DimOverlay" type="PanelContainer" parent="." unique_id=313991816]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_overlay")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=40318500]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=607067827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ResumeBtn" type="Button" parent="Panel/VBoxContainer" unique_id=1523861709]
+[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1898721266]
+custom_minimum_size = Vector2(440, 460)
 layout_mode = 2
-text = "Resume"
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="QuitBtn" type="Button" parent="Panel/VBoxContainer" unique_id=1030545782]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=1445757303]
 layout_mode = 2
-size_flags_vertical = 4
-text = "Quit"
+theme_override_constants/separation = 0
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/VBox" unique_id=889239961]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.12, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 52
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="CenterContainer/Panel/VBox" unique_id=1630458351]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.35, 0.06, 0.06, 0.55)
+
+[node name="Spacer1" type="Control" parent="CenterContainer/Panel/VBox" unique_id=1044710540]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="ResumeBtn" type="Button" parent="CenterContainer/Panel/VBox" unique_id=1453683482]
+custom_minimum_size = Vector2(340, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.72, 0.88, 0.68, 1)
+theme_override_colors/font_hover_color = Color(0.88, 1, 0.84, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_resume_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_resume_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_resume_hover")
+text = "Continue"
+
+[node name="Spacer2" type="Control" parent="CenterContainer/Panel/VBox" unique_id=764760547]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+
+[node name="QuitBtn" type="Button" parent="CenterContainer/Panel/VBox" unique_id=1133370806]
+custom_minimum_size = Vector2(340, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8, 0.55, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 0.7, 0.65, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_quit_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_quit_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
+text = "Abandon"
+
+[node name="Spacer3" type="Control" parent="CenterContainer/Panel/VBox" unique_id=538076975]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HintLabel" type="Label" parent="CenterContainer/Panel/VBox" unique_id=1975852272]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.28, 0.25, 0.65)
+theme_override_font_sizes/font_size = 15
+text = "press ESC to continue"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/Panel/VBox/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/QuitBtn" to="." method="_on_quit_btn_pressed"]

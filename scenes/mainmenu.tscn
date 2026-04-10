@@ -1,53 +1,231 @@
 [gd_scene format=3 uid="uid://dxjlku71crqmh"]
 
 [ext_resource type="Script" uid="uid://ce3s4vrk7mber" path="res://scripts/mainmenu.gd" id="1_5mbse"]
+[ext_resource type="FontFile" path="res://fount/Font1/Ghastly Panic.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.05, 0.03, 0.03, 0.90)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.30, 0.06, 0.06, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.10, 0.04, 0.04, 0.80)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.40, 0.08, 0.08, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.22, 0.05, 0.05, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.10, 0.10, 1.0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.35, 0.06, 0.06, 1.0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.80, 0.15, 0.15, 1.0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sep"]
+bg_color = Color(0.35, 0.06, 0.06, 0.60)
 
 [node name="mainmenu" type="Control" unique_id=856081788]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 255.0
-offset_top = 367.0
-offset_right = 255.0
-offset_bottom = 367.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5mbse")
 
-[node name="Panel" type="Panel" parent="." unique_id=822102095]
-layout_mode = 0
-offset_left = 51.0
-offset_top = -194.0
-offset_right = 540.0
-offset_bottom = 101.0
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.02, 0.02, 1.0)
 
-[node name="start" type="Button" parent="Panel" unique_id=1490655203]
-layout_mode = 0
-offset_left = 153.0
-offset_top = 63.0
-offset_right = 342.0
-offset_bottom = 116.0
-text = "start
-"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="quit" type="Button" parent="Panel" unique_id=990291772]
-layout_mode = 0
-offset_left = 148.0
-offset_top = 167.0
-offset_right = 338.0
-offset_bottom = 218.0
-text = "quit
-"
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(540, 580)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363376831]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=1282706081]
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 1164.0
-offset_bottom = 646.0
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.10, 0.10, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 72
+text = "DUNGEON"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.45, 0.40, 0.80)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "survive the darkness"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.35, 0.06, 0.06, 0.60)
+
+[node name="Spacer1" type="Control" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+
+[node name="StartBtn" type="Button" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(380, 72)
+theme_override_colors/font_color = Color(0.88, 0.78, 0.72, 1.0)
+theme_override_colors/font_hover_color = Color(1.0, 0.90, 0.85, 1.0)
+theme_override_colors/font_pressed_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "Enter the Dungeon"
+
+[node name="Spacer2" type="Control" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 22)
+
+[node name="MultiBtn" type="Button" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(380, 72)
+theme_override_colors/font_color = Color(0.72, 0.88, 0.68, 1.0)
+theme_override_colors/font_hover_color = Color(0.88, 1.0, 0.84, 1.0)
+theme_override_colors/font_pressed_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "Multiplayer"
+
+[node name="MultiPanel" type="PanelContainer" parent="CenterContainer/Panel/VBox"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_btn_normal")
+
+[node name="MultiVBox" type="VBoxContainer" parent="CenterContainer/Panel/VBox/MultiPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MultiTitle" type="Label" parent="CenterContainer/Panel/VBox/MultiPanel/MultiVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.50, 0.44, 0.90)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Choose Mode"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="CoopBtn" type="Button" parent="CenterContainer/Panel/VBox/MultiPanel/MultiVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(340, 58)
+theme_override_colors/font_color = Color(0.88, 0.78, 0.72, 1.0)
+theme_override_colors/font_hover_color = Color(1.0, 0.90, 0.85, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "1 - Co-op Survival"
+
+[node name="AsymBtn" type="Button" parent="CenterContainer/Panel/VBox/MultiPanel/MultiVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(340, 58)
+theme_override_colors/font_color = Color(0.88, 0.78, 0.72, 1.0)
+theme_override_colors/font_hover_color = Color(1.0, 0.90, 0.85, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "2 - Asymmetric Horror"
+
+[node name="Spacer3" type="Control" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 22)
+
+[node name="QuitBtn" type="Button" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(380, 72)
+theme_override_colors/font_color = Color(0.60, 0.50, 0.46, 0.90)
+theme_override_colors/font_hover_color = Color(0.85, 0.70, 0.65, 1.0)
+theme_override_colors/font_pressed_color = Color(1.0, 0.85, 0.80, 1.0)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "Flee"
+
+[node name="Spacer4" type="Control" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 36)
+
+[node name="VersionLabel" type="Label" parent="CenterContainer/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.30, 0.22, 0.20, 0.55)
+theme_override_font_sizes/font_size = 13
+text = "v0.1 alpha"
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
+mouse_filter = 2
 
-[connection signal="pressed" from="Panel/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Panel/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/StartBtn" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/MultiBtn" to="." method="_on_multi_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/MultiPanel/MultiVBox/CoopBtn" to="." method="_on_coop_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/MultiPanel/MultiVBox/AsymBtn" to="." method="_on_asym_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBox/QuitBtn" to="." method="_on_quit_pressed"]

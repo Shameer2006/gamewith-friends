@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="game"
-run/main_scene="uid://dxjlku71crqmh"
+run/main_scene="res://cutscene/cutscene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MultiplayerManager="*res://scripts/multiplayer_manager.gd"
 
 [input]
 
@@ -60,3 +64,7 @@ toggle_light={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[xr]
+
+shaders/enabled=true

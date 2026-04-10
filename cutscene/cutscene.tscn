@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b75ajuyvpplcx"]
+
+[ext_resource type="PackedScene" uid="uid://clc7y57ovynv0" path="res://assets/chartist_cave.glb" id="1_d3cms"]
+[ext_resource type="Script" uid="uid://d0esm32alqec0" path="res://cutscene/cutscene.gd" id="2_script"]
+
+[sub_resource type="Animation" id="Animation_dgkl1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(19.637543, -1.852644, 69.92885)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d3cms"]
+resource_name = "demo"
+
+[sub_resource type="Animation" id="Animation_xp3h3"]
+resource_name = "entre cut scene"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Vector3(19.637543, -1.852644, 69.92885), Vector3(19.637543, 3.395155, 47.00293), Vector3(7.257324, 0.8673191, 5.308487), Vector3(7.257324, -4.1301365, -14.202164)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1mu1"]
+_data = {
+&"RESET": SubResource("Animation_dgkl1"),
+&"demo": SubResource("Animation_d3cms"),
+&"entre cut scene": SubResource("Animation_xp3h3")
+}
+
+[node name="Sketchfab_Scene" unique_id=419500540 instance=ExtResource("1_d3cms")]
+script = ExtResource("2_script")
+
+[node name="Camera3D" type="Camera3D" parent="." index="1" unique_id=495458828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.637543, -1.852644, 69.92885)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=701911503]
+libraries/ = SubResource("AnimationLibrary_y1mu1")
